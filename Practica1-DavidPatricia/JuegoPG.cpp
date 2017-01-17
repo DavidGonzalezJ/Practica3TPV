@@ -5,6 +5,7 @@
 #include "Mariposa.h"
 #include "Premio.h"
 #include "GloboA.h"
+#include "MenuPG.h"
 
 JuegoPG::JuegoPG()
 {
@@ -12,8 +13,8 @@ JuegoPG::JuegoPG()
 	initSDL();
 	rellenaArch();
 	initMedia();
-	initGlobos();
-	puntuacion = 0;
+	//initGlobos();
+	//puntuacion = 0;
 	error = false;
 	exit = false;
 	mouseX = 0;
@@ -23,7 +24,7 @@ JuegoPG::JuegoPG()
 
 JuegoPG::~JuegoPG()
 {
-	freeGlobos();
+	//freeGlobos();
 	freeMedia();
 	closeSDL();
 }
@@ -33,7 +34,7 @@ void JuegoPG::getMousePos(int & mpx, int & mpy)const{
 	mpy = mouseY;
 }
 
-void JuegoPG::newBaja(ObjetoJuego* po){
+/*void JuegoPG::newBaja(ObjetoJuego* po){
 	if (typeid(*po) == typeid(GlobosPG) || typeid(*po) == typeid(GloboA)) {
 		--numGlobos;
 	}
@@ -50,7 +51,7 @@ void JuegoPG::newPuntos(ObjetoJuego* po) {
 void JuegoPG::newPremio(ObjetoJuego* po) {
 	pObjetos.emplace_back(new Premio(rand() % 720, rand() % 480, this));
 	dynamic_cast<Premio*>(pObjetos[pObjetos.size() - 1])->reiniciarP();
-}
+}*/
 
 //Inicializa las texturas, la musica y la fuente
 void JuegoPG::initMedia() {
@@ -97,6 +98,7 @@ void JuegoPG::rellenaArch() {
 	archText.push_back("..\\bmps\\Doritos.png");
 }
 
+//Invoca una ventana(info) con un boton(boton)
 void JuegoPG::muestraMensaje(std::string info, std::string boton) {
 	//SDL_DisplayMode dm;
 	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, info.c_str(), boton.c_str(), nullptr);
@@ -148,7 +150,7 @@ void JuegoPG::closeSDL() {
 	SDL_Quit();
 }
 
-bool JuegoPG::initGlobos(){
+/*bool JuegoPG::initGlobos(){
 	bool success = true;
 	//Creo un int que me servirá para almacenar el aleatorio
 	int r;
@@ -172,17 +174,17 @@ void JuegoPG::freeGlobos() {
 		delete pObjetos[n];
 		pObjetos[n] = nullptr;
 	}
-}
+}*/
 
-
+//HABRIA QUE CAMBIARLO
 void JuegoPG::run() {
 	if (!error) {
 		Uint32 MSxUpdate = 500;
 		std::cout << "PLAY \n";
 		Uint32 lastUpdate = SDL_GetTicks();
-		muestraMensaje("PLAY", "Ready?");
+		muestraMensaje("PLAY", "Ready?");//SE BORRARIA
+		pilaEstados.push(new MenuPG(this));
 		sonido->playMusic();
-		render();
 		handle_event();
 		while (!exit && !error && numGlobos>0) {
 			if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ // while(elapsed >= MSxUpdate)
@@ -207,9 +209,10 @@ void JuegoPG::onExit() {
 	exit = true;
 }
 
+/*
 bool JuegoPG::gameOver(){
 	return numGlobos <= 0;
-}
+}*/
 
 void JuegoPG::handle_event(){
 	SDL_Event e;
@@ -225,7 +228,7 @@ void JuegoPG::handle_event(){
 	}
 }
 
-void JuegoPG::render()const{
+/*void JuegoPG::render()const{
 	SDL_RenderClear(pRender);
 	pTexturaG[TFondo]->draw(pRender, *fRect, nullptr);
 
@@ -236,16 +239,16 @@ void JuegoPG::render()const{
 	std::string puntos = std::to_string(puntuacion);
 	pTexturaG[pTexturaG.size()-1]->renderText(pRender, puntos);
 	SDL_RenderPresent(pRender);
-}
+}*/
 
-void JuegoPG::update() {
+/*void JuegoPG::update() {
 	for each (ObjetoJuego* g in pObjetos)
 	{
 		g->update();
 	}
-}
+}*/
 
-void JuegoPG::onClick(){
+/*void JuegoPG::onClick(){
 	bool click = false;
 	int i = 0;
 	while (!click && i<pObjetos.size()){
@@ -254,4 +257,4 @@ void JuegoPG::onClick(){
 		}
 		i++;
 	}
-}
+}*/

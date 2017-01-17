@@ -8,7 +8,7 @@ public:
 	~Pausa();
 	Boton* Resume;
 	Boton* Menu;
-	CallBack_t ResumeC;
-	CallBack_t MenucC;
+	void ResumeC();
+	void MenucC();
 };
 

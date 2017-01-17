@@ -6,11 +6,14 @@
 class EstadoPG: public EstadoJuego
 {
 public:
-	EstadoPG();
+	EstadoPG(JuegoPG* juego);
 	virtual ~EstadoPG();
+	virtual void draw()const;
+	virtual void onClick();
+	virtual void update();
 
 protected:
 	JuegoPG* juego;
-	std::vector<ObjetoJuego*> objetosJuego;
+	std::vector<ObjetoJuego*> pObjetos;
 };
 

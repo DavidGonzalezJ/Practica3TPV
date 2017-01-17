@@ -8,7 +8,7 @@ public:
 	~MenuPG();
 	Boton* play;
 	Boton* exit;
-	CallBack_t playC;
-	CallBack_t exitC;
+	void playC();
+	void exitC();
 };
 

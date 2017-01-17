@@ -9,8 +9,8 @@ public:
 	~GameOver();
 	Boton* Score;
 	Boton* Menu;
-	CallBack_t ScoreC;
-	CallBack_t MenucC;
+	void ScoreC();
+	void MenucC();
 
 };
 

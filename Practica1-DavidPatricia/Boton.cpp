@@ -1,7 +1,7 @@
 #include "Boton.h"
 
 
-Boton::Boton()
+Boton::Boton(CallBack_t* callback)
 {
 }
 

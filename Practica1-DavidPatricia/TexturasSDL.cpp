@@ -36,9 +36,9 @@ bool TexturasSDL::load(SDL_Renderer* pRender, std::string const& nombArch) {
 	return success;
 }
 
-void TexturasSDL::draw(SDL_Renderer* pRender, SDL_Rect& rect, SDL_Rect*const vent) {
+void TexturasSDL::draw(SDL_Renderer* pRender, SDL_Rect* rect, SDL_Rect*const vent) {
 	// Draw objets 
-	SDL_RenderCopy(pRender, pTextura, vent, &rect);  // nullptr, nullptr -> toda la textura en toda la ventana
+	SDL_RenderCopy(pRender, pTextura, vent, rect);  // nullptr, nullptr -> toda la textura en toda la ventana
 }
 
 void TexturasSDL::daTamaño(int & alto, int & ancho) {

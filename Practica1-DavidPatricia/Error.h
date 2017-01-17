@@ -6,7 +6,7 @@ class Error
 public:
 	Error(std::string mensaje);
 	~Error();
-	const std::string mensaje();
+	std::string showMensaje() const;
 private:
 	std::string mensaje;
 };
