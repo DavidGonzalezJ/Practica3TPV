@@ -1,8 +1,12 @@
 #include "PlayPG.h"
-
+#include "Mariposa.h"
+#include "Premio.h"
+#include "GloboA.h"
 
 PlayPG::PlayPG(JuegoPG* juego):EstadoPG(juego)
 {
+	sonido = juego->getSound();
+	pRender = juego->getRender();
 }
 
 
@@ -25,7 +29,7 @@ void PlayPG::newPuntos(ObjetoJuego* po) {
 }
 
 void PlayPG::newPremio(ObjetoJuego* po) {
-	pObjetos.emplace_back(new Premio(rand() % 720, rand() % 480, this));
+	pObjetos.emplace_back(new Premio(rand() % 720, rand() % 480, juego));
 	dynamic_cast<Premio*>(pObjetos[pObjetos.size() - 1])->reiniciarP();
 }
 
@@ -38,12 +42,12 @@ bool PlayPG::initGlobos() {
 		//Aquí lanzo la moneda y creo uno de los dos globos
 		r = rand() % 2;
 		if (r == 1)
-			pObjetos.emplace_back(new GlobosPG(rand() % 720, rand() % 480, this));
+			pObjetos.emplace_back(new GlobosPG(rand() % 720, rand() % 480, juego));
 		else
-			pObjetos.emplace_back(new GloboA(rand() % 720, rand() % 480, this));
+			pObjetos.emplace_back(new GloboA(rand() % 720, rand() % 480, juego));
 	}
-	pObjetos.emplace_back(new Mariposa(rand() % 720, rand() % 480, this));
-	pObjetos.emplace_back(new Mariposa(rand() % 720, rand() % 480, this));
+	pObjetos.emplace_back(new Mariposa(rand() % 720, rand() % 480, juego));
+	pObjetos.emplace_back(new Mariposa(rand() % 720, rand() % 480, juego));
 	//pObjetos.emplace_back(new Premio(rand() % 720, rand() % 480, this));
 	return success;
 }
@@ -60,32 +64,13 @@ bool PlayPG::gameOver() {
 }
 
 void PlayPG::draw()const {
-	SDL_RenderClear(pRender);
-	pTexturaG[TFondo]->draw(pRender, *fRect, nullptr);
-
-	for each (ObjetoJuego* g in pObjetos)
-	{
-		g->draw();
-	}
+	EstadoPG::draw();
 	std::string puntos = std::to_string(puntuacion);
-	pTexturaG[pTexturaG.size() - 1]->renderText(pRender, puntos);
+	juego->getPuntosText()->renderText(pRender, puntos);
 	SDL_RenderPresent(pRender);
 }
-
-void PlayPG::update() {
-	for each (ObjetoJuego* g in pObjetos)
-	{
-		g->update();
-	}
-}
-
-void PlayPG::onClick(){
-	bool click = false;
-	int i = 0;
-	while (!click && i<pObjetos.size()){
-		if (pObjetos[i]->onClick()) {
-		click = true;
-		}
-	i++;
+void PlayPG::update(){
+	if(numGlobos>0) {
+		EstadoPG::update();
 	}
 }

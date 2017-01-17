@@ -18,5 +18,7 @@ private:
 	bool gameOver();
 	bool initGlobos();///
 	void freeGlobos();///
+	Sound_SDL* sonido;
+	SDL_Renderer* pRender;
 };
 

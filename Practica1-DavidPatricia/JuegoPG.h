@@ -39,6 +39,8 @@ public:
 	int getWindowWidth()const { return SCREEN_WIDTH; };
 	void muestraMensaje(std::string info, std::string boton);//
 	int getPuntos()const { return puntuacion; };
+	Sound_SDL* getSound()const{ return sonido; };
+	TexturasSDL* getPuntosText(){ return pTexturaG[0]; };
 
 private:
 	std::stack<EstadoJuego*> pilaEstados;

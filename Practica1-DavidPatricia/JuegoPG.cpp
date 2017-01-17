@@ -38,24 +38,6 @@ void JuegoPG::getMousePos(int & mpx, int & mpy)const{
 	mpy = mouseY;
 }
 
-/*void JuegoPG::newBaja(ObjetoJuego* po){
-	if (typeid(*po) == typeid(GlobosPG) || typeid(*po) == typeid(GloboA)) {
-		--numGlobos;
-	}
-	else if (typeid(*po) == typeid(Premio)) {
-		sonido->playEffect();
-	}
-}
-
-void JuegoPG::newPuntos(ObjetoJuego* po) {
-	sonido->playEffect();
-	puntuacion += dynamic_cast<ObjetoPG*>(po)->puntos;
-}
-
-void JuegoPG::newPremio(ObjetoJuego* po) {
-	pObjetos.emplace_back(new Premio(rand() % 720, rand() % 480, this));
-	dynamic_cast<Premio*>(pObjetos[pObjetos.size() - 1])->reiniciarP();
-}*/
 
 //Inicializa las texturas, la musica y la fuente
 void JuegoPG::initMedia() {
@@ -194,13 +176,14 @@ void JuegoPG::run() {
 		pilaEstados.push(new MenuPG(this));
 		sonido->playMusic();
 		handle_event();
-		while (!exit && !error && numGlobos>0) {
+		while (!exit && !error) {
 			if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ // while(elapsed >= MSxUpdate)
-				update();
+				pilaEstados.top()->update();
 				lastUpdate = SDL_GetTicks();
 			}
-			render();
-			onClick();
+			////TRY CATCH por si no hay estado
+			pilaEstados.top()->draw();
+			pilaEstados.top()->onClick();
 			handle_event();
 		}
 
@@ -215,6 +198,7 @@ void JuegoPG::run() {
 
 void JuegoPG::onExit() {
 	exit = true;
+	popState();
 }
 
 /*
@@ -226,6 +210,9 @@ void JuegoPG::handle_event(){
 	SDL_Event e;
 	if (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT) onExit();
+		else if (e.type == SDL_KEYUP && e.key.keysym.sym == SDL_SCANCODE_ESCAPE){
+			pushState(new Pausa(this));
+		}
 		else if (e.type == SDL_MOUSEBUTTONUP) {
 			if (e.button.button == SDL_BUTTON_LEFT) {
 				std::cout << "CLICK \n";

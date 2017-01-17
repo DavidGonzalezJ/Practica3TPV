@@ -9,7 +9,6 @@ Pausa::Pausa(JuegoPG* juego):EstadoPG(juego)
 	pObjetos.emplace_back(Menu);
 }
 
-
 Pausa::~Pausa()
 {
 	delete Resume;

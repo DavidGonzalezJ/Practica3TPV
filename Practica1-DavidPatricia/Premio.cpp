@@ -21,7 +21,7 @@ Premio::~Premio()
 
 void Premio::draw()const {
 	if(visible)
-		juego->getTextura(textura)->draw(juego->getRender(), *rect, nullptr);
+		juego->getTextura(textura)->draw(juego->getRender(), rect, nullptr);
 }
 
 void Premio::update() {

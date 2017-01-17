@@ -20,7 +20,7 @@ GlobosPG::~GlobosPG()
 
 void GlobosPG::draw() const {
 	if (vis && !expl) {
-		juego->getTextura(textura)->draw(juego->getRender(), *rect, nullptr);
+		juego->getTextura(textura)->draw(juego->getRender(), rect, nullptr);
 	}
 }
 
