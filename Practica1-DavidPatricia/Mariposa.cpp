@@ -27,7 +27,7 @@ Mariposa::~Mariposa()
 }
 
 void Mariposa::draw()const {
-	juego->getTextura(textura)->draw(juego->getRender(), *rect, RFrame);
+	juego->getTextura(textura)->draw(juego->getRender(), rect, RFrame);
 }
 
 void Mariposa::update() {

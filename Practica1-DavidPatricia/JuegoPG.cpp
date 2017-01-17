@@ -6,6 +6,10 @@
 #include "Premio.h"
 #include "GloboA.h"
 #include "MenuPG.h"
+#include "PlayPG.h"
+#include "GameOver.h"
+#include "Pausa.h"
+
 
 JuegoPG::JuegoPG()
 {
@@ -258,3 +262,16 @@ void JuegoPG::handle_event(){
 		i++;
 	}
 }*/
+
+void JuegoPG::changeState(EstadoJuego* newSt) {
+	popState();
+	pushState(newSt);
+}
+
+void JuegoPG::pushState(EstadoJuego* newState) {
+	pilaEstados.push(newState);
+}
+
+void JuegoPG::popState() {
+	pilaEstados.pop();
+}

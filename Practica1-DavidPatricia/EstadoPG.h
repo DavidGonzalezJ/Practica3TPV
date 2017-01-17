@@ -1,5 +1,6 @@
 #pragma once
 #include "EstadoJuego.h"
+#include "ObjetoJuego.h"
 #include "JuegoPG.h"
 #include <vector>
 

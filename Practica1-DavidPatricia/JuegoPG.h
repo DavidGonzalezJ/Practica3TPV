@@ -3,13 +3,14 @@
 #define H_JuegoPG_H
 #include <SDL.h>
 #include <vector>
-#include "ObjetoJuego.h"
+//#include "ObjetoJuego.h"
+#include "EstadoJuego.h"
 #include "TexturasSDL.h"
 #include "Sound_SDL.h"
 #include "checkML.h"
 #include <stack>
 
-enum Texturas_t{TFondo, TGlobo, TMariposa, TPremio};
+enum Texturas_t{TFondo, TGlobo, TMariposa, TPremio, TBoton};
 //enum Estado {EMENU, EJUEGO, EGAMEOVER, EPAUSA};
 
 class JuegoPG{
@@ -31,9 +32,11 @@ public:
 	void initMedia();//
 	void freeMedia();//
 	void changeState(EstadoJuego* newSt);
+	void pushState(EstadoJuego* newState);
+	void popState();
 
 private:
-	std::stack<EstadoJuego> pilaEstados;
+	std::stack<EstadoJuego*> pilaEstados;
 	//int numGlobos = 6;///
 	const int SCREEN_WIDTH = 640;//   //Screen dimension
 	const int SCREEN_HEIGHT = 480;//  //Screen dimension

@@ -7,6 +7,9 @@ public:
 	typedef void CallBack_t(JuegoPG* jg);
 	Boton(CallBack_t* callback);
 	~Boton();
+	virtual void draw()const;
+	virtual void update();
+	virtual bool onClick();
 
 protected:
 	CallBack_t * cb;

@@ -4,7 +4,7 @@
 class MenuPG : public EstadoPG
 {
 public:
-	MenuPG();
+	MenuPG(JuegoPG* juego);
 	~MenuPG();
 	Boton* play;
 	Boton* exit;
