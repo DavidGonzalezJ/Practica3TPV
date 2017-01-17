@@ -27,4 +27,5 @@ bool Boton::onClick() {
 	juego->getMousePos(x, y);
 	if (dentro(x, y))
 		cb;
+	return true;/////NO
 }

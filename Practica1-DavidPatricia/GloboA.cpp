@@ -1,5 +1,5 @@
 #include "GloboA.h"
-
+#include "PlayPG.h"
 
 GloboA::GloboA(int px, int py, JuegoPG* game) :GlobosPG(px, py, game)
 {
@@ -25,11 +25,11 @@ void GloboA::update(){
 			}
 			else puntos -= 5*AP;
 
-			if (rect->h <= 10 | rect->w <= 10) {
+			if (rect->h <= 10 || rect->w <= 10) {
 				vis = false;
 				desaparece = true;
 				expl = true;
-				juego->newBaja(this);
+				dynamic_cast<PlayPG*>(juego->getState())->newBaja(this);
 			}
 		}
 	}

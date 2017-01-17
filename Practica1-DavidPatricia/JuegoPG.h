@@ -41,6 +41,7 @@ public:
 	int getPuntos()const { return puntuacion; };
 	Sound_SDL* getSound()const{ return sonido; };
 	TexturasSDL* getPuntosText(){ return pTexturaG[0]; };
+	EstadoJuego* getState(){ return pilaEstados.top(); };
 
 private:
 	std::stack<EstadoJuego*> pilaEstados;

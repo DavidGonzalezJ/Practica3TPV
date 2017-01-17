@@ -1,4 +1,5 @@
 #include "Mariposa.h"
+#include "PlayPG.h"
 
 
 Mariposa::Mariposa(int px, int py, JuegoPG* game)
@@ -54,7 +55,7 @@ bool Mariposa::onClick() {
 	if (contador == 0) {
 		premio = true;
 		contador = 3;
-		juego->newPremio(this);
+		dynamic_cast<PlayPG*>(juego->getState())->newPremio(this);
 	}
 	return premio;
 }

@@ -20,5 +20,6 @@ private:
 	void freeGlobos();///
 	Sound_SDL* sonido;
 	SDL_Renderer* pRender;
+	EstadoJuego* actualState;
 };
 

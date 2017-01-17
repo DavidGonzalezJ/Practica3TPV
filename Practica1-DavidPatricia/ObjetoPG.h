@@ -15,7 +15,6 @@ protected:
 	Texturas_t textura;
 	JuegoPG* juego;
 	SDL_Rect* rect;
-	
 };
 
 #endif

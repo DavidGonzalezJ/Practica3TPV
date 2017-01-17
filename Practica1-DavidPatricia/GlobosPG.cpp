@@ -1,5 +1,5 @@
 #include "GlobosPG.h"
-
+#include "PlayPG.h"
 
 GlobosPG::GlobosPG(int px, int py, JuegoPG* game) 
 {
@@ -33,8 +33,8 @@ bool GlobosPG::onClick(){
 		expl = true;
 		desaparece = true;
 		vis = false;
-		juego->newBaja(this);
-		juego->newPuntos(this);
+		dynamic_cast<PlayPG*>(juego->getState())->newBaja(this);
+		dynamic_cast<PlayPG*>(juego->getState())->newPuntos(this);
 	}
 	return desaparece;
 }
@@ -48,11 +48,11 @@ void GlobosPG::update(){
 			rect->h -= DT;
 			rect->w -= DT;
 			puntos += AP;
-			if (rect->h <= 10| rect->w <= 10) {
+			if (rect->h <= 10 || rect->w <= 10) {
 				vis = false;
 				desaparece = true;
 				expl = true;
-				juego->newBaja(this);
+				dynamic_cast<PlayPG*>(juego->getState())->newBaja(this);
 			}
 		}
 	}

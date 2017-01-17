@@ -1,4 +1,5 @@
 #include "Premio.h"
+#include "PlayPG.h"
 
 
 
@@ -38,8 +39,8 @@ bool Premio::onClick() {
 	if (visible && dentro(x, y)) {
 		visible = false;
 		premio = true;
-		juego->newBaja(this);
-		juego->newPuntos(this);
+		dynamic_cast<PlayPG*>(juego->getState())->newBaja(this);
+		dynamic_cast<PlayPG*>(juego->getState())->newPuntos(this);
 	}
 	return premio;
 }
