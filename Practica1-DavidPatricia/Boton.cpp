@@ -1,9 +1,12 @@
 #include "Boton.h"
 
 
-Boton::Boton(CallBack_t* callback):cb(callback)
+Boton::Boton(CallBack_t* callback, int py):cb(callback)
 {
 	textura = TBoton;
+	rect->x = juego->getWindowWidth()/2;
+	rect->y = py;
+	juego->getTextura(textura)->daTamaño(rect->h, rect->w);
 }
 
 

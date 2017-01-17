@@ -5,12 +5,12 @@ class GameOver : public EstadoPG
 {
 
 public:
-	GameOver();
+	GameOver(JuegoPG* juego);
 	~GameOver();
 	Boton* Score;
 	Boton* Menu;
-	void ScoreC();
-	void MenucC();
+	static void ScoreC(JuegoPG* juego);
+	static void MenuC(JuegoPG* juego);
 
 };
 

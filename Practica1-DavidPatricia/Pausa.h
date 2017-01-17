@@ -4,11 +4,11 @@
 class Pausa : public EstadoPG
 {
 public:
-	Pausa();
+	Pausa(JuegoPG* juego);
 	~Pausa();
 	Boton* Resume;
 	Boton* Menu;
-	void ResumeC();
-	void MenucC();
+	static void ResumeC(JuegoPG* juego);
+	static void MenuC(JuegoPG* juego);
 };
 

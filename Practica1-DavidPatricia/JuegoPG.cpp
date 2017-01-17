@@ -70,6 +70,9 @@ void JuegoPG::initMedia() {
 	pTexturaG.emplace_back(new TexturasSDL());
 	pTexturaG[3]->load(pRender, archText[TPremio]);
 	pTexturaG.emplace_back(new TexturasSDL());
+	pTexturaG[4]->load(pRender, archText[TBoton]);
+	pTexturaG.emplace_back(new TexturasSDL());
+
 
 	//Creamos un SDL_Rect para pasarselo después al render (para el fondo)
 	fRect = new SDL_Rect();
@@ -100,6 +103,7 @@ void JuegoPG::rellenaArch() {
 	archText.push_back("..\\bmps\\Globo.png");
 	archText.push_back("..\\bmps\\Mariposa.png");
 	archText.push_back("..\\bmps\\Doritos.png");
+	archText.push_back("..\\bmps\\MenuBoton.png");
 }
 
 //Invoca una ventana(info) con un boton(boton)

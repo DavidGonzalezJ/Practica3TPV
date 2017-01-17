@@ -34,6 +34,11 @@ public:
 	void changeState(EstadoJuego* newSt);
 	void pushState(EstadoJuego* newState);
 	void popState();
+	void onExit();//SETSALIR
+	//Para obtener el ancho de la pantalla
+	int getWindowWidth()const { return SCREEN_WIDTH; };
+	void muestraMensaje(std::string info, std::string boton);//
+	int getPuntos()const { return puntuacion; };
 
 private:
 	std::stack<EstadoJuego*> pilaEstados;
@@ -50,8 +55,8 @@ private:
 	int mouseY;//
 
 	bool error, exit;
-	/*int puntuacion;///
-	bool gameOver();///*/
+	int puntuacion;
+	//bool gameOver();///*/
 	bool initSDL();//
 	void closeSDL();//
 	/*bool initGlobos();///
@@ -60,9 +65,7 @@ private:
 	void onClick();///
 	void update();///*/
 	void handle_event();//
-	void onExit();//SETSALIR
 	void initMusic();//
-	void muestraMensaje(std::string info, std::string boton);//
 	void closeMusic();//
 
 	void rellenaArch();//

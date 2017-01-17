@@ -8,7 +8,7 @@ public:
 	~MenuPG();
 	Boton* play;
 	Boton* exit;
-	void playC();
-	void exitC();
+	static void playC(JuegoPG* juego);
+	static void exitC(JuegoPG* juego);
 };
 
